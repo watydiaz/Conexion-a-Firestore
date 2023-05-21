@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Persona } from '../interfaces/persona.interface';
 import { ServicioService } from '../servicios/servicio.service';
 
 @Component({
@@ -9,20 +10,38 @@ import { ServicioService } from '../servicios/servicio.service';
 })
 export class FomularioComponent implements OnInit {
 
-  datosPersonales: FormGroup = new FormGroup({
-    nombre    : new FormControl( '' ),
-    apellido  : new FormControl( '' ),
-  });
+  datosPersonales: FormGroup;
 
-  constructor(private service: ServicioService) { }
-
-  ngOnInit(): void {
+  constructor(
+    private service: ServicioService,
+  ) {
+    this.datosPersonales = new FormGroup({
+      nombre: new FormControl(),
+      apellido: new FormControl()
+    });
   }
-  crearPersona(evt:Event):any{
+
+  // async botonEnviar() {
+  //   const data = this.formulario.value;
+  //   console.log(data);
+  //   const respuesta = await this.service.crear(data);
+  //   console.log(respuesta);
+  // }
+
+  async crearPersona(evt:Event){
     evt.preventDefault();
     if (this.datosPersonales.invalid){
       return;
     }
-    this.service.crear();
+    const data = this.datosPersonales.value;
+    console.log(data);
+
+    const respuesta = await this.service.crear(data);
+    console.log(respuesta);
+  }
+
+
+
+  ngOnInit(): void {
   }
 }
