@@ -1,0 +1,11 @@
+<p>fomulario works!</p>
+
+  <form [formGroup]="datosPersonales" (ngSubmit)="crearPersona( $event )">
+    <label for="nombre">Nombre:</label>
+    <input type="text" formControlName="nombre"><br><br>
+
+    <label for="apellido">Apellido:</label>
+    <input type="text" formControlName="apellido"><br><br>
+
+    <input type="submit" value="Enviar">
+  </form>

@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "prueba1-7c7dd"
+  },
+  "targets": {
+    "prueba1-7c7dd": {
+      "hosting": {
+        "ejemploServicio": [
+          "prueba1-7c7dd"
+        ]
+      }
+    }
+  }
+}
