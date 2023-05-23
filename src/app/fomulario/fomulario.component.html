@@ -9,3 +9,8 @@
 
     <input type="submit" value="Enviar">
   </form>
+
+  <div *ngFor="let persona of personas">
+    <p>Nombre: {{persona.nombre}} </p>
+    <p>Apellido: {{persona.apellido}} </p>
+</div>

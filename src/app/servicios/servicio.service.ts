@@ -20,10 +20,11 @@ export class ServicioService {
   }
 
    //Get
+   obtienePersona(): Observable<Persona[]> {
+    const referencia = collection(this.firestore, 'personas');
+    return collectionData(referencia, { idField: 'id'}) as Observable<Persona[]>;
+  }
 
-  //  obtienePersona(): Observable<Persona> {
-  //   const referencia = collection(this.firestore, 'personas');
-  //   return collectionData(referencia, { idField: 'id'}) as Observable<Persona[]>;
-  // }
+
 
 }

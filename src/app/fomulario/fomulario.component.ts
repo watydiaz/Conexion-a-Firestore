@@ -11,6 +11,7 @@ import { ServicioService } from '../servicios/servicio.service';
 export class FomularioComponent implements OnInit {
 
   datosPersonales: FormGroup;
+  personas: Persona[]=[];
 
   constructor(
     private service: ServicioService,
@@ -41,7 +42,11 @@ export class FomularioComponent implements OnInit {
   }
 
 
-
   ngOnInit(): void {
+    this.service.obtienePersona().subscribe(personas => this.personas = personas);
+    this.personas.forEach(element => {
+      console.log(element);
+    });
+
   }
 }
